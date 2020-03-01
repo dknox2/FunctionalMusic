@@ -1,7 +1,7 @@
 (load "scale.scm")
 
-(define (time-signature num-of-beats note-value)
-  (list num-of-beats note-value))
+;;(define (time-signature num-of-beats note-value)
+  ;;(list num-of-beats note-value))
 
 ;; note;
 ;; (length pitch)
@@ -9,13 +9,21 @@
   (list pitch length))
 
 (define (normalize-to-time-signature note-length time-signature)
-  (
+  (expt note-length (/ (cadr time-signature) note-length)))
 
 ;; measure:
-;; (note note note note)
+;; (note note note note ... )
 ;; where sum of notes = enough beats to complete measure
 (define (valid-measure? measure time-signature)
-  (eq? (car time-signature) (/ (apply + (map (lambda (length) (expt length (/ (cadr time-signature) length))) (map cadr measure))) (cadr time-signature))))
+  (eq?
+   (car time-signature)
+   (/
+    (apply
+     +
+     (map
+      (lambda (note-length) (normalize-to-time-signature note-length time-signature))
+     (map cadr measure)))
+   (cadr time-signature))))
 
 ;; song:
 ;; 'SONG time-signature measures
