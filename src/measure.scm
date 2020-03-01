@@ -1,39 +1,34 @@
 (load "scale.scm")
 
-;;(define (time-signature num-of-beats note-value)
-  ;;(list num-of-beats note-value))
+;; Declare note length constants
+(define eighth-note 1/8)
+(define quarter-note 1/4)
+(define half-note 1/2)
+(define whole-note 1)
+
+(define (time-signature num-of-beats note-value)
+  (list num-of-beats note-value))
 
 ;; note;
-;; (length pitch)
+;; (pitch length)
 (define (note pitch length)
   (list pitch length))
 
 (define (normalize-to-time-signature note-length time-signature)
   (expt note-length (/ (cadr time-signature) note-length)))
 
+(define (valid-measure? time-signature notes)
+  (equal?
+   (/ (car time-signature) (cadr time-signature))
+   (apply + (map cadr notes))))
+
 ;; measure:
-;; (note note note note ... )
+;; ((time signature) (notes))
 ;; where sum of notes = enough beats to complete measure
-(define (valid-measure? measure time-signature)
-  (eq?
-   (car time-signature)
-   (/
-    (apply
-     +
-     (map
-      (lambda (note-length) (normalize-to-time-signature note-length time-signature))
-     (map cadr measure)))
-   (cadr time-signature))))
+(define (measure time-signature notes)
+  (list time-signature notes))
 
 ;; song:
 ;; 'SONG time-signature measures
 (define (song time-signature)
   (list 'SONG time-signature))
-
-(define test-measure
-  (list
-   (note 'C 4)
-   (note 'D 4)
-   (note 'F 4)))
-
-(valid-measure? test-measure (list 3 4))
