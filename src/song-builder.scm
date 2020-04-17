@@ -16,9 +16,11 @@ Construct a random measure using notes in the given chord with the given time si
         (measure time-signature notes)
         (loop (append notes (list (random-note chord quarter-note))))))) ;; TODO we are only using quarter notes here
 
+#|
 (define test-scale (scale 'C major))
 (define test-chord (chord 'C test-scale triad))
 
 (define test-time-signature (time-signature 4 4))
 
 (random-measure-in-chord test-time-signature test-chord)
+|#

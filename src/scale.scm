@@ -1,7 +1,7 @@
 #|
 Constants representing the chromatic scale
 |#
-(define chromatic-scale (list 'A 'A# 'B 'C 'C# 'D 'D# 'E 'F 'F# 'G 'G#))
+(define chromatic-scale (list "a" "a#" "b" "c" "c#" "d" "d#" "e" "f" "f#" "g" "g#"))
 
 #|
 Scale definitions in chromatic scale intervals
