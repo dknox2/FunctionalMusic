@@ -4,13 +4,13 @@ Constants representing the chromatic scale
 (define chromatic-scale (list "a" "a#" "b" "c" "c#" "d" "d#" "e" "f" "f#" "g" "g#"))
 
 #|
-Scale definitions in chromatic scale intervals
+Scale definitions in chromatic scale degrees
 |#
 (define major (list 1 3 5 6 8 10 12))
 (define minor (list 1 3 4 6 8 9 11))
 
 #|
-Chord definitions in major scale intervals
+Chord definitions in major scale degrees
 |#
 (define triad (list 1 3 5))
 
@@ -29,18 +29,18 @@ Finds the index of an element in a given list.
 #|
 Gives the musical interval between two notes on the given scale.
 |#
-(define (interval from to scale)
+(define (scale-degree from to scale)
   (let ([start (index-of from scale)]
         [end (index-of to scale)])
     (+ (modulo (- end start) (length scale)) 1)))
 
 #|
-Filters notes in the scale according to the given intervals.
+Filters notes in the scale according to the given degrees.
 This can be used to construct new scales, chords, etc.
 |#
-(define (filter-notes root scale intervals)
+(define (filter-notes root scale degrees)
   (filter (lambda (to)
-            (list? (member (interval root to scale) intervals)))
+            (list? (member (scale-degree root to scale) degrees)))
           scale))
 
 (define (reorder-for-root scale root)
@@ -55,20 +55,20 @@ This can be used to construct new scales, chords, etc.
          (append reordered (list current))))))
 
 #|
-Constructs a scale, starting at the given root, for the intervals.
-Note this implementation is scale agnostic, any scale intervals can be given.
+Constructs a scale, starting at the given root, for the degrees.
+Note this implementation is scale agnostic, any scale degrees can be given.
 |#
-(define (scale root intervals)
+(define (scale root degrees)
   (reorder-for-root
-   (filter-notes root chromatic-scale intervals)
+   (filter-notes root chromatic-scale degrees)
    root))
 
 #|
-Constructs a chord with the given root on the given scale for the intervals.
+Constructs a chord with the given root on the given scale for the degrees.
 |#
-(define (chord root scale intervals)
+(define (chord root scale degrees)
   (reorder-for-root
-   (filter-notes root scale intervals)
+   (filter-notes root scale degrees)
    root))
 
 #|

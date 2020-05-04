@@ -24,7 +24,7 @@ Construct a random measure using notes in the given chord with the given time si
 (define eighth-two-sixteenths (cons eighth-note two-sixteenths))
 (define four-sixteenths (append two-sixteenths two-sixteenths))
 
-(define note-options (list
+(define note-patterns (list
                       two-eighths
                       two-sixteenths-eighth
                       eighth-two-sixteenths
@@ -37,17 +37,18 @@ Construct a random measure using notes in the given chord with the given time si
 #|
 A barebones implementation of waveform collapse on a linear space to create measures of music
 |#
-(define (measure-of-note-options time-signature note-options scale)
-  (let loop ([notes '()])
+(define (measure-of-note-patterns time-signature note-patterns chord)
+  (let loop([notes '()])
     (cond
       [(measure-out-of-bounds? time-signature notes)
        (loop '())]
       [(measure-incomplete? time-signature notes)
-       (let inner ([chosen-pattern (random-element note-options)]
-                   [built-notes '()])
+       (let inner
+         ([chosen-pattern (random-element note-patterns)]
+          [built-notes '()])
          (if (null? chosen-pattern)
              (loop (append notes built-notes))
-             (inner (cdr chosen-pattern) (append built-notes (list (note (random-element scale) (car chosen-pattern)))))))]
+             (inner (cdr chosen-pattern) (append built-notes (list (note (random-element chord) (car chosen-pattern)))))))]
       [else
        notes])))
 
@@ -56,14 +57,14 @@ A barebones implementation of waveform collapse on a linear space to create meas
 
 #|
 Song format:
-(key time-sig measures
+(key-signature time-signature (measures))
 |#
-(define (song-from-note-options time-signature key-signature note-options scale song-length)
-  (let loop ([measures (list key-signature time-signature)])
+(define (song-from-note-patterns time-signature key-signature note-patterns chords song-length)
+  (let loop
+    ([measures (list key-signature time-signature)]
+     [chord-index 0])
     (if (eq? (length measures) song-length)
         measures
-        (let ([measure (measure-of-note-options time-signature note-options scale)])
-          (loop (append measures (list measure)))))))
-
-(define test-song (song-from-note-options (time-signature 3 4) (key-signature "c" "major") note-options (scale "g" major) 8))
+        (let ([measure (measure-of-note-patterns time-signature note-patterns (list-ref chords chord-index))])
+          (loop (append measures (list measure)) (modulo (+ chord-index 1) (length chords)))))))
 
