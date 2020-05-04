@@ -1,5 +1,36 @@
-\relative c'' {
-\time 4/4
+\absolute {
+\time 3/4
+\key g \major
 \clef treble
-a2 f16 g16 d8 c8 d16 g16 g1 d8 e8 d16 c16 f8 b8 e16 b16 e8 f8 a8 b8 c8 e8 b8 f16 d16 c4 f2 a8 c8 b4 d4 d2 f8 e8 a8 a16 c16 a2 c16 f16 a8 a1 g16 c16 f8 g8 g16 g16 c8 c8 g16 a16 c8 g8 a8 f2 d16 c16 c8 b1 b8 e16 g16 a8 b8 g16 g16 g8 c16 b16 a8 f8 a8 d16 f16 f8 e8 f8 c4 b16 e16 b8 d2 b16 e16 d8 c8 c8 d16 e16 e8 e4 d16 c16 e8 
+d'4 fis'2 
+e'4 fis'16 e'16 a'8 d'16 e'16 a'16 a'16 
+a'16 g'16 b'16 b'16 e'16 a'16 c'16 e'16 a'8 fis'16 g'16 
+g'8 c'8 a'2 
+g'16 e'16 b'16 d'16 d'16 e'16 a'8 d'8 b'16 e'16 
+c'8 g'8 d'16 b'16 a'16 g'16 b'8 a'16 d'16 
+g'16 a'16 g'8 c'8 e'8 a'16 fis'16 b'16 c'16 
+b'16 e'16 b'8 g'8 g'8 fis'16 c'16 d'8 
+b'4 fis'2 
+a'4 d'8 g'8 a'4 
+e'16 g'16 e'16 a'16 e'8 d'16 g'16 a'16 d'16 g'8 
+b'16 fis'16 c'16 a'16 d'8 a'16 b'16 c'16 c'16 d'16 g'16 
+g'2 g'8 e'8 
+b'8 d'8 e'8 g'16 b'16 a'16 fis'16 c'8 
+a'8 c'16 d'16 a'16 b'16 c'8 a'4 
+a'4 b'8 d'8 e'8 d'8 
+e'8 e'16 g'16 c'2 
+g'8 a'8 g'8 g'16 b'16 c'4 
+e'16 e'16 e'16 c'16 g'16 g'16 c'8 a'16 b'16 b'8 
+fis'16 b'16 e'8 b'16 e'16 e'8 d'8 c'16 fis'16 
+d'8 c'16 a'16 c'8 c'16 b'16 g'16 e'16 fis'16 g'16 
+b'16 c'16 e'8 b'4 d'8 fis'8 
+c'16 a'16 a'16 g'16 a'8 fis'8 fis'8 b'8 
+d'4 g'8 b'8 a'8 d'8 
+d'4 c'8 e'8 fis'16 e'16 g'8 
+e'8 e'16 fis'16 a'16 g'16 b'8 c'16 g'16 a'8 
+b'16 fis'16 b'8 c'8 c'16 a'16 b'16 c'16 a'8 
+g'8 c'16 g'16 fis'4 fis'8 g'8 
+b'2 b'4 
+b'8 a'8 a'2 
+
 }

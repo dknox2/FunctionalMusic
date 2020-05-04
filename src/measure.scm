@@ -14,11 +14,8 @@
 
 ;; note:
 ;; (pitch length)
-(define (note . args)
-  args)
-
-(define (normalize-to-time-signature note-length time-signature)
-  (expt note-length (/ (cadr time-signature) note-length)))
+(define (note pitch length)
+  (list pitch length))
 
 (define (measure-length measure)
   (apply + (map cadr measure)))
@@ -38,8 +35,3 @@
 ;; where sum of notes = enough beats to complete measure according to song
 (define (measure notes)
   (list notes))
-
-;; song:
-;; 'SONG time-signature measures
-(define (song time-signature)
-  (list 'SONG time-signature))
