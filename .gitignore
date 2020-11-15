@@ -6,3 +6,7 @@
 *.scm#*
 .#*.scm
 *.bak
+
+*.dep
+*.zo
+*.exe
