@@ -1,6 +1,6 @@
 #lang racket
 
-(provide (all-defined-out))
+(provide convert-song)
 
 (define (convert-pitch pitch)
   (if (> (string-length pitch) 1)
