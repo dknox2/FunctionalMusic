@@ -1,4 +1,6 @@
-(load "scale.scm")
+#lang racket
+
+(provide (all-defined-out))
 
 ;; Declare note length constants
 (define sixteenth-note 1/16)

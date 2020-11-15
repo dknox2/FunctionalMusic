@@ -1,3 +1,7 @@
+#lang racket
+
+(provide (all-defined-out))
+
 #|
 Constants representing the chromatic scale
 |#

@@ -1,0 +1,1 @@
+("7.9" racket ("f1ea2884ffc655d580b63505db4da233217d9743" . "4ae8fc28f49ab52a37adee27d2d8535a98c241eb") #"C:\\Users\\Dylan\\Desktop\\FunctionalMusic\\src\\measure.rkt" #"C:\\Users\\Dylan\\Desktop\\FunctionalMusic\\src\\scale.rkt" (collects #"errortrace" #"errortrace-key.rkt") (collects #"racket" #"main.rkt") (collects #"racket" #"runtime-config.rkt"))

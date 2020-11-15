@@ -1,3 +1,7 @@
+#lang racket
+
+(provide (all-defined-out))
+
 (define (convert-pitch pitch)
   (if (> (string-length pitch) 1)
       (if (eq? #\# (string-ref pitch 1))

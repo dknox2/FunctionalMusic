@@ -1,20 +1,15 @@
-(load "scale.scm")
-(load "measure.scm")
+#lang racket
+
+(require "scale.rkt")
+(require "measure.rkt")
+
+(provide (all-defined-out))
 
 (define (random-element list)
   (list-ref list (random (length list))))
 
 (define (random-note notes note-length)
   (note (random-element notes) note-length))
-
-#|
-Construct a random measure using notes in the given chord with the given time signature
-|#
-(define (random-measure-in-chord time-signature chord)
-  (let loop ([notes '()])
-    (if (valid-measure? time-signature notes)
-        (measure notes)
-        (loop (append notes (list (random-note chord quarter-note))))))) ;; TODO we are only using quarter notes here
 
 ; define some note patterns
 (define two-sixteenths (list sixteenth-note sixteenth-note))
@@ -32,7 +27,6 @@ Construct a random measure using notes in the given chord with the given time si
                       (list quarter-note)
                       (list half-note)
                       (list whole-note)))
-
 
 #|
 A barebones implementation of waveform collapse on a linear space to create measures of music
@@ -68,3 +62,5 @@ Song format:
         (let ([measure (measure-of-note-patterns time-signature note-patterns (list-ref chords chord-index))])
           (loop (append measures (list measure)) (modulo (+ chord-index 1) (length chords)))))))
 
+(define (random-song measure-length)
+  (song-from-note-patterns (time-signature 3 4) (key-signature "b" "minor") note-patterns (chord-progression (scale "b" minor) 1-5-6-4) measure-length))
