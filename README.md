@@ -10,7 +10,11 @@ Currently the library is packaged with an implementation of a simplified version
 
 ## Usage
 
-See the ```src/example``` directory for usage. To format the Lilypond code to a PDF of human-readable sheet music, the [Lilypond program](http://lilypond.org) is required.
+See the ```src/example``` directory for usage of the codebase to create a program that generates and saves sheet music in the Lilypond format. To convert the output to a PDF of human-readable sheet music, the [Lilypond program](http://lilypond.org) is required.
+
+To compile the example file to an executable, use the ```raco``` compiler provided by Racket, which will produce an executable file compatible with your system:
+
+```raco exe --gui waveform-example.rkt```
 
 ## Roadmap
 
